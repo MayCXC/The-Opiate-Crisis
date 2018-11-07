@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import MapWithMarkers from './MapWithMarkers.vue'
+import MapWithMarkers from '../components/MapWithMarkers.vue'
 export default {
   name: 'familyInfo',
   components: {
