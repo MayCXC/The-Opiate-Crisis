@@ -75,7 +75,8 @@ function fetchCTDataAndUpdateDatabase () {
                     // Loop that gets the geocoded address for each object in
                     // the response and adds the relevant properties to the
                     // address object
-                    for (let j = 0; j < addressData.length; j++) {
+                    // TODO: not finding address for all, limited to 20 for now
+                    for (let j = 0; j < 20; j++) {
                         // IIFE that has a copy of each j and creates a closure
                         // around settimeout
                         (function (index) {
