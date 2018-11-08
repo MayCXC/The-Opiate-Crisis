@@ -27,79 +27,87 @@ let geocoderOptions = {
 let geocoder = NodeGeocoder(geocoderOptions);
 
 // Execute a cron job first of every month to create a new database,
-// keep a backup of 3 databases and use the most recent one for the api route - MAYBE
-// cron job should make a post request to the post route
-// let CronJob = require('cron').CronJob;
-// new CronJob('0 0 1 * *', function () {
+let CronJob = require('cron').CronJob;
+const databaseJob = new CronJob('0 0 1 * *', function () {
+    fetchCTDataAndUpdateDatabase();
+}, null, true, 'America/New_York');
+databaseJob.start();
 
-// console.log('You will see this message every second');
-// }, null, true, 'America/New_York');
-
-
-
-// send addresses as an array of marker objects
-// let markerObj = { position: {} };
-// markerObj.position.lat = results[0].geometry.location.lat();
-// markerObj.position.lng = results[0].geometry.location.lng();
-// this.markers.push(markerObj);
-// get user's data to show the closest addresses by using find and setting it to
-// within whatever degrees for lat and lng
-// send a type attribute with each request to differentiate between which
-// database should be sent
+// https://stackoverflow.com/questions/16561296/finding-nearest-locations-using-google-maps-api
 app.get('/api/markers', (req, res) => {
-    console.log(req.params);
-    Address.substanceAbuseAddresses.find({}, (err, addresses) => {
-        res.json(addresses);
+    let credentialType = req.query.credentialType;
+    if (credentialType) {
+        Address.find({ credentialtype: credentialType }, (err, addresses) => {
+            res.json(addresses);
+        });
+    } else {
+        Address.find({}, (err, addresses) => {
+            res.json(addresses);
+        });
+    }
+});
+
+
+function fetchCTDataAndUpdateDatabase () {
+    db.dropCollection('addresses', (err) => {
+        // if err and database doesn't exists continue
+        if (err && err.code != 26) return console.log(err);
+        // CT DATA ENDPOINTS
+        let substanceAbuseCareFacilitiesAPI = "https://data.ct.gov/resource/htz8-fxbk.json";
+        let certifiedAlcoholAndDrugCounselorsAPI = "https://data.ct.gov/resource/63fh-b7ub.json";
+        let naloxonePharmaciesAPI = "https://data.ct.gov/resource/4vs4-3cb3.json";
+        let apiEndpoints = [substanceAbuseCareFacilitiesAPI, certifiedAlcoholAndDrugCounselorsAPI, naloxonePharmaciesAPI];
+        // Loop that fetches data for each endpoint
+        for (let i = 0; i < apiEndpoints.length; i++) {
+            // Header sent with request to each endpoint
+            const options = {
+                url: apiEndpoints[i],
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            request(options, (error, respone, body) => {
+                if (!error && respone.statusCode == 200) {
+                    let addressData = JSON.parse(body); // get the json from the response body
+                    let addressString = '';
+                    let addressObj = {};
+                    let credential = '';
+                    // Loop that gets the geocoded address for each object in
+                    // the response and adds the relevant properties to the
+                    // address object
+                    for (let j = 0; j < addressData.length; j++) {
+                        // IIFE that has a copy of each j and creates a closure
+                        // around settimeout
+                        (function (index) {
+                            // if (addressData[index].status == 'ACTIVE') {
+                            setTimeout(() => {
+                                addressString = `${addressData[index].address}, ${addressData[index].city}, ${addressData[index].state}`;
+                                credential = addressData[index].credential.toLowerCase();
+                                geocoder.geocode(addressString).then((res) => {
+                                    addressObj.name = addressData[index].name ? addressData[index].name : addressData[index].pharmacy_name ? addressData[index].pharmacy_name : 'NAME UNAVAILBLE';
+                                    addressObj.type = addressData[index].type ? addressData[index].type : 'PHARMACY';
+                                    addressObj.credential = credential.includes('pcy') ? 'Pharmacy' : credential;
+                                    addressObj.credentialtype = credential.includes('pcy') ? 'NPHAR' : credential.includes('substance') ? 'SAF' : 'ADC'
+                                    addressObj.credentialid = addressData[index].credentialid;
+                                    addressObj.location = res[0].formattedAddress;
+                                    addressObj.lat = res[0].latitude;
+                                    addressObj.lng = res[0].longitude;
+                                    addressObj.placeid = res[0].extra.googlePlaceId;
+                                    Address.create(addressObj);
+                                }).catch((err) => {
+                                    console.log('caught you');
+                                    console.log(err);
+                                })
+                            }, 200 * j);
+                            // }
+                        })(j);
+                    }
+                } else {
+                    console.log(error);
+                }
+            });
+        }
     });
-});
-
-// send stringified json data from ct data api with a type
-// send a type attribute with each request to differentiate between which
-// database should be sent
-// when geocoding, wait an acceptable amount of time before making another
-// request to avoid OVER_QUERY_LIMIT error
-// https://stackoverflow.com/questions/11792916/over-query-limit-in-google-maps-api-v3-how-do-i-pause-delay-in-javascript-to-sl
-// https://stackoverflow.com/questions/2419219/how-do-i-geocode-20-addresses-without-receiving-an-over-query-limit-response
-app.post('/api/markers', (req, res) => {
-    // geocoder.geocode(req.query.address)
-    //     .then(data => ({
-    //         raw: data.raw,
-    //         data
-    //     }))
-    //     .then(json => res.send(json))
-    //     .catch(next);
-});
-
-// drop collection then update it once a month
-// this should take a type as a parameter to determine which url to fetch and
-// which collection to drop and update
-function makeFetch (mapType) {
-    const options = {
-        url: 'https://data.ct.gov/resource/htz8-fxbk.json',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-    request(options, (error, respone, body) => {
-        if (!error && respone.statusCode == 200) {
-            let addressData = JSON.parse(body);
-            let addressString = '';
-            let addressObj = {};
-            for (let i = 0; i < addressData.length; i++) {
-                addressString = `${addressData[i].address}, ${addressData[i].city}, ${addressData[i].state}`;
-                geocoder.geocode(addressString, (err, res) => {
-                    if (err) { return console.log(err.message) }
-                    addressObj.businessname = addressData[i].businessname;
-                    addressObj.credential = addressData[i].credential;
-                    addressObj.credentialid = addressData[i].credentialid;
-                    addressObj.location = res[0].formattedAddress;
-                    addressObj.lat = res[0].latitude;
-                    addressObj.lng = res[0].longitude;
-                    Address.substanceAbuseAddresses.create(addressObj)
-                });
-            }
-        }
-    })
 }
-
+fetchCTDataAndUpdateDatabase();
 app.listen(process.env.PORT || 4000);

@@ -1,12 +1,12 @@
 <template>
-  <GmapMap :center="{lat:41.6032, lng:-73.0877}" :zoom="8" map-type-id="roadmap" style="width: 500px; height: 300px">
-    <GmapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true" @click="center=m.position" />
+  <GmapMap :center="{lat:41.6032, lng:-73.0877}" :zoom="7" map-type-id="roadmap" style="width: 1000px; height: 600px">
+    <GmapCluster>
+      <GmapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true" @click="center=m.position" />
+    </GmapCluster>
   </GmapMap>
 </template>
 
 <script>
-import { gmapApi } from 'vue2-google-maps'
-
 export default {
   name: "Gmap",
   props: ['type'],
@@ -18,11 +18,8 @@ export default {
   components: {
     // add the three buttons as one component here to render under the map
   },
-  computed: {
-    google: gmapApi
-  },
   methods: {
-    fetchSubstanceAbuseCareFacilities: function () {
+    fetchMarkers: function (credentialType) {
       const myInit = {
         method: 'GET',
         headers: {
@@ -31,31 +28,23 @@ export default {
         mode: 'cors',
         cache: 'default'
       };
-      let myRequest = new Request('https://data.ct.gov/resource/htz8-fxbk.json', myInit);
+      let myRequest = new Request(`http://localhost:4000/api/markers?credentialType`, myInit);
       fetch(myRequest)
         .then((response) => {
           return response.json();
         })
         .then((data) => {
-          // let firstAddress = data[0];
-          let geocoder = new google.maps.Geocoder();
-          for (let i = 0; i < data.length; i++) {
-            geocoder.geocode({ address: `${data[i].address}, ${data[i].city}, ${data[i].state}` }, (results, status) => {
-              if (status == 'OK') {
-                let markerObj = { position: {} };
-                markerObj.position.lat = results[0].geometry.location.lat();
-                markerObj.position.lng = results[0].geometry.location.lng();
-                this.markers.push(markerObj);
-              } else {
-                console.log(status);
-                i = 400;
-              }
-            });
-          }
-          // setTimeout(() => {
+          for (let i = 0; i < 20; i++) {
+            // (function (index, markers) {
+            //   setTimeout(() => {
+            let markerObj = { position: {} };
+            markerObj.position.lat = data[i].lat;
+            markerObj.position.lng = data[i].lng;
+            this.markers.push(markerObj);
+            //   }, 200 * i)
+            // })(i, this.markers);
 
-          //   console.log(`Valids: ${valids} Invalids: ${invalids}`);
-          // }, 1000)
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -63,9 +52,7 @@ export default {
     }
   },
   mounted: function () {
-    setTimeout(() => {
-      this.fetchSubstanceAbuseCareFacilities();
-    }, 1000);
+    this.fetchMarkers();
   }
 };
 </script>

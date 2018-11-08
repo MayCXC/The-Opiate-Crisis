@@ -1,14 +1,15 @@
 const mongoose = require("mongoose");
 
 const addressSchema = new mongoose.Schema({
-    businessname: String,
+    name: String,
+    type: String,
     credential: String,
+    credentialtype: String,
     credentialid: String,
     location: String,
     lat: Number,
     lng: Number,
+    placeid: String
 });
 
-module.exports = {
-    substanceAbuseAddresses: mongoose.model('Address', addressSchema),
-}
+module.exports = mongoose.model('Address', addressSchema);

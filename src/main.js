@@ -6,12 +6,14 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
 Vue.use(BootstrapVue)
 import * as VueGoogleMaps from 'vue2-google-maps'
+import GmapCluster from 'vue2-google-maps/dist/components/cluster'
 Vue.use(VueGoogleMaps, {
   load: {
     key: process.env.API_KEY,
     libraries: 'places',
   }
 })
+Vue.component('GmapCluster', GmapCluster)
 
 new Vue({
   router,
