@@ -2,10 +2,19 @@
   <div id="app">
     <b-container fluid>
       <b-row>
+        <b-jumbotron bg-variant="dark" text-variant="white">
+        <template slot="header">
+          Connect CT
+        </template>
+        <template slot="lead">
+          Opiate abuse is a widespread and unfortunate reality that all Connecticut residents face.
+          <hr class="bg-light">
+          For information on opiate addiction and treatment in your area, choose your role below:
+        </template>
         <b-form inline>
           <label>&nbsp;I am a&nbsp;</label>
           <b-select v-model="selected.who" class="m-md-2 bg-dark text-light">
-            <option value="user" class="bg-transparent">current user of opioids</option>
+            <option value="user">current user of opioids</option>
             <option value="family">friend or family member</option>
           </b-select>
           <label>&nbsp;seeking&nbsp;</label>
@@ -15,6 +24,7 @@
           </b-select>
           <label>&nbsp;for opiate abuse.&nbsp;</label>
         </b-form>
+      </b-jumbotron>
       </b-row>
       <b-row>
       <!--<router-link v-bind:to="'/' + selected.who + '/' + selected.what">
@@ -23,11 +33,9 @@
       -->
       </b-row>
       <b-row>
-        <b-col>
-        <transition name="fade">
+        <transition name="fade" mode="out-in">
           <router-view></router-view>
         </transition>
-      </b-col>
       </b-row>
     </b-container>
   </div>
@@ -66,18 +74,14 @@ body {
 }
 
 #app {
-  font-family: Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 2em;
+  font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #dedede;
-  margin-top: 60px;
 }
 
-.fade-enter-to,
-.fade-leave {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.5s;
 }
 .fade-enter,
