@@ -1,41 +1,40 @@
 <template>
   <div id="app">
-    <b-container fluid>
+    <b-container >
       <b-row>
-        <b-jumbotron bg-variant="dark" text-variant="white">
-        <template slot="header">
-          Connect CT
-        </template>
-        <template slot="lead">
-          Opiate abuse is a widespread and unfortunate reality that all Connecticut residents face.
-          <hr class="bg-light">
-          For information on opiate addiction and treatment in your area, choose your role below:
-        </template>
-        <b-form inline>
-          <label>&nbsp;I am a&nbsp;</label>
-          <b-select v-model="selected.who" class="m-md-2 bg-dark text-light">
-            <option value="user">current user of opioids</option>
-            <option value="family">friend or family member</option>
-          </b-select>
-          <label>&nbsp;seeking&nbsp;</label>
-          <b-select v-model="selected.what" class="m-md-2 bg-dark text-light">
-            <option value="treatment">emergency treatment</option>
-            <option value="info">helpful information</option>
-          </b-select>
-          <label>&nbsp;for opiate abuse.&nbsp;</label>
-        </b-form>
-      </b-jumbotron>
-      </b-row>
-      <b-row>
-      <!--<router-link v-bind:to="'/' + selected.who + '/' + selected.what">
-        {{ "/" + selected.who + "/" + selected.what }}
-        </router-link>
-      -->
-      </b-row>
-      <b-row>
-        <transition name="fade" mode="out-in">
-          <router-view></router-view>
-        </transition>
+        <b-col>
+          <b-jumbotron bg-variant="dark" text-variant="white">
+            <template slot="header">
+              Connect CT
+            </template>
+            <template slot="lead">
+              Opiate abuse is a widespread and unfortunate reality that all Connecticut residents face.
+              <hr class="bg-light">
+              For information on opiate usage and treatment in your area, choose your role below:
+            </template>
+            <b-form inline>
+              <label>&nbsp;I am a&nbsp;</label>
+              <b-select v-model="selected.who" class="m-md-2 bg-dark text-light">
+                <option value="user">current user of opioids</option>
+                <option value="family">friend or family member</option>
+              </b-select>
+              <label>&nbsp;seeking&nbsp;</label>
+              <b-select v-model="selected.what" class="m-md-2 bg-dark text-light">
+                <option value="treatment">emergency treatment</option>
+                <option value="info">helpful information</option>
+              </b-select>
+              <label>&nbsp;for opiate use.&nbsp;</label>
+            </b-form>
+          </b-jumbotron>
+          <!--
+          <router-link v-bind:to="'/' + selected.who + '/' + selected.what">
+            {{ "/" + selected.who + "/" + selected.what }}
+          </router-link>
+          -->
+          <transition name="fade" mode="out-in">
+            <router-view></router-view>
+          </transition>
+        </b-col>
       </b-row>
     </b-container>
   </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <GmapMap :center="{lat:41.6032, lng:-73.0877}" :zoom="7" map-type-id="roadmap" style="width: 1000px; height: 600px">
+    <GmapMap :center="{lat:41.6032, lng:-73.0877}" :zoom="7" map-type-id="roadmap" style="width: 100%; height: 600px">
       <GmapCluster>
         <GmapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true" @click="center=m.position" />
       </GmapCluster>

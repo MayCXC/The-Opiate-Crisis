@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <h1> Hello World! </h1>
+    <b-card no-body bg-variant="dark">
+      <b-card-body bg-variant="dark">
+        Hello, World.
+      </b-card-body>
     <map-with-markers></map-with-markers>
-  </div>
+    </b-card>
 </template>
 
 <script>
