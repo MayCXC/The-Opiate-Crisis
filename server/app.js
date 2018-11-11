@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
-mongoose.connect("mongodb://isolution:eMvNaUnimsmVL46@ds155263.mlab.com:55263/the-opiate-crisis");
+mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true });
 let db = mongoose.connection;
 db.on('open', () => {
     console.log('Connected');
@@ -76,7 +76,7 @@ function fetchCTDataAndUpdateDatabase () {
                     // the response and adds the relevant properties to the
                     // address object
                     // TODO: not finding address for all, limited to 20 for now
-                    for (let j = 0; j < 20; j++) {
+                    for (let j = 0; j < addressData.length; j++) {
                         // IIFE that has a copy of each j and creates a closure
                         // around settimeout
                         (function (index) {
@@ -90,13 +90,14 @@ function fetchCTDataAndUpdateDatabase () {
                                     addressObj.credential = credential.includes('pcy') ? 'Pharmacy' : credential;
                                     addressObj.credentialtype = credential.includes('pcy') ? 'NPHAR' : credential.includes('substance') ? 'SAF' : 'ADC'
                                     addressObj.credentialid = addressData[index].credentialid;
-                                    addressObj.location = res[0].formattedAddress;
-                                    addressObj.lat = res[0].latitude;
-                                    addressObj.lng = res[0].longitude;
-                                    addressObj.placeid = res[0].extra.googlePlaceId;
-                                    Address.create(addressObj);
+                                    if (res[0] != undefined) {
+                                        addressObj.location = res[0].formattedAddress;
+                                        addressObj.lat = res[0].latitude;
+                                        addressObj.lng = res[0].longitude;
+                                        addressObj.placeid = res[0].extra.googlePlaceId;
+                                        Address.create(addressObj);
+                                    }
                                 }).catch((err) => {
-                                    console.log('caught you');
                                     console.log(err);
                                 })
                             }, 200 * j);
@@ -110,5 +111,5 @@ function fetchCTDataAndUpdateDatabase () {
         }
     });
 }
-fetchCTDataAndUpdateDatabase();
+
 app.listen(process.env.PORT || 4000);
