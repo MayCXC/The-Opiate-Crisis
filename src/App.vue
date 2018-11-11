@@ -17,14 +17,17 @@
         </b-form>
       </b-row>
       <b-row>
-        <router-link v-bind:to="'/' + selected.who + '/' + selected.what">
-          {{ "/" + selected.who + "/" + selected.what }}
+      <!--<router-link v-bind:to="'/' + selected.who + '/' + selected.what">
+        {{ "/" + selected.who + "/" + selected.what }}
         </router-link>
+      -->
       </b-row>
       <b-row>
+        <b-col>
         <transition name="fade">
           <router-view></router-view>
         </transition>
+      </b-col>
       </b-row>
     </b-container>
   </div>
@@ -73,8 +76,8 @@ body {
   margin-top: 60px;
 }
 
-.fade-enter-active,
-.fade-leave-active {
+.fade-enter-to,
+.fade-leave {
   transition: opacity 0.5s;
 }
 .fade-enter,
