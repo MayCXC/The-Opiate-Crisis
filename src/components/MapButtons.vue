@@ -1,8 +1,8 @@
 <template>
     <div>
-        <button v-on:click="onClickSubstance">Subtance Abuse</button>
-        <button v-on:click="onClickNaloxone">Naloxone Pharmacies</button>
-        <button v-on:click="onClickAlcoholDrug">Alcohol and Drug Counselors</button>
+        <b-button v-on:click="onClickSubstance">Subtance Abuse</b-button>
+        <b-button v-on:click="onClickNaloxone">Naloxone Pharmacies</b-button>
+        <b-button v-on:click="onClickAlcoholDrug">Alcohol and Drug Counselors</b-button>
     </div>
 </template>
 
