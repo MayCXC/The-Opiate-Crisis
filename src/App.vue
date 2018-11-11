@@ -45,12 +45,12 @@ export default {
     }
   },
   watch: {
-    'selected.who': function(newSelection) {
-      if(this.selected.what != null)
+    'selected.who': function (newSelection) {
+      if (this.selected.what != null)
         this.$router.push('/' + this.selected.who + '/' + this.selected.what)
     },
-    'selected.what': function(newSelection) {
-      if(this.selected.who != null)
+    'selected.what': function (newSelection) {
+      if (this.selected.who != null)
         this.$router.push('/' + this.selected.who + '/' + this.selected.what)
     }
   }
@@ -73,10 +73,12 @@ body {
   margin-top: 60px;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
