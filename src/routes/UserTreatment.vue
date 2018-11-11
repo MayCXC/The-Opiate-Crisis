@@ -2,7 +2,7 @@
   <div>
     <h1> Hello World! </h1>
     <b-card class="text-center" title="Emergency resources">
-      <b-button>Call 911</b-button>
+      <b-button v-on:click="call911">Call 911</b-button>
       <b-button v-on:click="getLocation" >Nearest treatment center</b-button>
     </b-card>
   </div>
@@ -24,6 +24,10 @@ export default {
         alert("Sorry, this browser does not support geolocation.");
       }
     },
+    call911: function () {
+      // 911 calling functionality intentionally omitted
+      alert("Call 911 using 'tel://911'");
+    }
   }
 }
 </script>
