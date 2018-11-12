@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1> Hello World! </h1>
-    <b-card class="text-center" title="Emergency resources">
+    <!--h1> Hello World! </h1-->
+    <b-card class="text-center" title="Emergency resources" bg-variant="light">
       <b-button v-on:click="call911">Call 911</b-button>
       <b-button v-on:click="getLocation" >Nearest treatment center</b-button>
     </b-card>
@@ -15,7 +15,8 @@ export default {
     getHelp: function (position) {
       let lat = position.coords.latitude;
       let long = position.coords.longitude;
-      window.location.href = "https://findtreatment.samhsa.gov/locator?sAddr=" + lat + "," + long;
+      //window.location.href = "https://findtreatment.samhsa.gov/locator?sAddr=" + lat + "," + long;
+      window.location.href = "https://www.google.com/maps/dir/?api=1&origin=" + lat + "%2C+" + long + "&destination=drug+rehab+center" 
     },
     getLocation: function () {
       if(navigator.geolocation) {
