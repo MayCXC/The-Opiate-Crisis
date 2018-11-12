@@ -1,7 +1,7 @@
 <template>
     <b-card no-body bg-variant="dark">
       <b-card-body bg-variant="dark">
-        Hello, World.
+        Choose a type of support center to locate below:
       </b-card-body>
     <map-with-markers></map-with-markers>
     </b-card>
