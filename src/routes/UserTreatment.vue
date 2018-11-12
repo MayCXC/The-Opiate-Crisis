@@ -18,7 +18,7 @@ export default {
       let lat = position.coords.latitude;
       let long = position.coords.longitude;
       //window.location.href = "https://findtreatment.samhsa.gov/locator?sAddr=" + lat + "," + long;
-      window.location.href = "https://www.google.com/maps/dir/?api=1&origin=" + lat + "%2C+" + long + "&destination=drug+rehab+center"
+      window.location.href = "https://www.google.com/maps/dir/?api=1&destination=drug+rehab+center"
     },
     getLocation: function () {
       if(navigator.geolocation) {
