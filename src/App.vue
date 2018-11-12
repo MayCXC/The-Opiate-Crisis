@@ -3,7 +3,7 @@
     <b-container >
       <b-row>
         <b-col>
-          <b-jumbotron text-variant="dark">
+          <b-jumbotron>
             <template slot="header">
               Connect CT
             </template>
@@ -14,12 +14,12 @@
             </template>
             <b-form inline>
               <label>&nbsp;I am a&nbsp;</label>
-              <b-select v-model="selected.who" v-bind:select-size="selected.who == null ? 2 : 1" class="m-md-2 bg-dark text-light" style="display:inline-block; overflow:hidden;">
+              <b-select v-model="selected.who" v-bind:select-size="selected.who == null ? 2 : 1" class="m-md-2">
                 <option value="user">current user of opioids</option>
                 <option value="family">friend or family member</option>
               </b-select>
               <label>&nbsp;seeking&nbsp;</label>
-              <b-select v-model="selected.what" v-bind:select-size="selected.what == null ? 2 : 1" class="m-md-2 bg-dark text-light">
+              <b-select v-model="selected.what" v-bind:select-size="selected.what == null ? 2 : 1" class="m-md-2">
                 <option value="treatment">emergency treatment</option>
                 <option value="info">helpful information</option>
               </b-select>
