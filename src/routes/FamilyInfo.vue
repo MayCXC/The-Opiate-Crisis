@@ -1,6 +1,6 @@
 <template>
-    <b-card no-body bg-variant="dark">
-      <b-card-body bg-variant="dark">
+    <b-card no-body bg-variant="light">
+      <b-card-body>
         Hello, World.
       </b-card-body>
     <map-with-markers></map-with-markers>
