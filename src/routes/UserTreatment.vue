@@ -1,9 +1,14 @@
 <template>
   <div>
+<<<<<<< HEAD
     <b-card bg-variant="danger" class="text-center" title="Emergency resources">
       <p class="card-text">
         If you are in immediate danger, contact emergency services as soon as possible by choosing an option below:
       </p>
+=======
+    <!--h1> Hello World! </h1-->
+    <b-card class="text-center" title="Emergency resources" bg-variant="light">
+>>>>>>> 63e920385ac0e9548188d178bf0c50a1350fda7b
       <b-button v-on:click="call911">Call 911</b-button>
       <b-button v-on:click="getLocation">Find a treatment center</b-button>
     </b-card>
@@ -17,7 +22,8 @@ export default {
     getHelp: function (position) {
       let lat = position.coords.latitude;
       let long = position.coords.longitude;
-      window.location.href = "https://findtreatment.samhsa.gov/locator?sAddr=" + lat + "," + long;
+      //window.location.href = "https://findtreatment.samhsa.gov/locator?sAddr=" + lat + "," + long;
+      window.location.href = "https://www.google.com/maps/dir/?api=1&origin=" + lat + "%2C+" + long + "&destination=drug+rehab+center" 
     },
     getLocation: function () {
       if(navigator.geolocation) {

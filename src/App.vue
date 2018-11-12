@@ -3,7 +3,7 @@
     <b-container >
       <b-row>
         <b-col>
-          <b-jumbotron bg-variant="dark" text-variant="white">
+          <b-jumbotron text-variant="dark">
             <template slot="header">
               Connect CT
             </template>
@@ -69,14 +69,16 @@ export default {
 
 <style>
 body {
-  background-color: #0c0c0c;
+  background-color: white;
 }
 
 #app {
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #dedede;
+  color: #343a40;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .bloc { display:inline-block; vertical-align:top; overflow:hidden; border:solid grey 1px; }
@@ -109,4 +111,5 @@ li {
 a {
   color: #42b983;
 }
+
 </style>
