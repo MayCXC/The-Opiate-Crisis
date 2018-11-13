@@ -6,6 +6,7 @@ import FamilyTreatment from './FamilyTreatment.vue'
 import UserInfo from './UserInfo.vue'
 import UserTreatment from './UserTreatment.vue'
 
+// dynamically load four pages, one for each combonation of options in App.vue
 export default new Router({
   routes: [
     {

@@ -1,15 +1,15 @@
 <template>
-  <div>
-      <b-button v-on:click="onClickSubstance">Subtance Abuse</b-button>
+  <div> <!-- Bootstrap buttons, https://bootstrap-vue.js.org/docs/components/button/ -->
+      <b-button v-on:click="onClickSubstance">Subtance Abuse Facilities</b-button>
       <b-button v-on:click="onClickNaloxone">Naloxone Pharmacies</b-button>
       <b-button v-on:click="onClickAlcoholDrug">Alcohol and Drug Counselors</b-button>
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
     name: "MapButtons",
-    methods: {
+    methods: { // google maps navigation API filters
         onClickSubstance: function () {
             this.$emit('clicked', "SAF");
         },

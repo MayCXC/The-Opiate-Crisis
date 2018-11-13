@@ -54,7 +54,7 @@ module.exports = {
   performance: {
     hints: false
   },
-  plugins: [new ExtractTextPlugin("main.css"), new dotenv()],
+  plugins: [new ExtractTextPlugin("main.css"), new dotenv() /* load google maps and mongoDB API keys hidden with .gitignore */],
   devtool: '#eval-source-map'
 }
 
