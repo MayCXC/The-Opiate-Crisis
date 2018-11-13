@@ -3,28 +3,40 @@
     <b-container >
       <b-row>
         <b-col>
-          <b-jumbotron>
+          <b-jumbotron id="jumbotron-1" class="pt-2">
             <template slot="header">
-              Connect CT
+              Connect <wbr>CT
             </template>
             <template slot="lead">
               Opiate abuse is a widespread and unfortunate reality that affects all Connecticut residents in some way.
-              <hr class="bg-light">
+              <br>
               For information on opiate usage and treatment in your area, choose your role below:
+              <hr>
             </template>
             <b-form inline>
-              <label>&nbsp;I am a&nbsp;</label>
-              <b-select v-model="selected.who" v-bind:select-size="selected.who == null ? 2 : 1" class="m-md-2">
-                <option value="user">current user of opioids</option>
-                <option value="family">friend or family member</option>
-              </b-select>
-              <label>&nbsp;seeking&nbsp;</label>
-              <b-select v-model="selected.what" v-bind:select-size="selected.what == null ? 2 : 1" class="m-md-2">
-                <option value="treatment">emergency treatment</option>
-                <option value="info">helpful information</option>
-              </b-select>
+              <label for="whoInlineSelect" class="mr-sm-2">I am a</label>
+              <b-form-select id="whoInlineSelect"
+                size="sm"
+                v-model="selected.who"
+                v-bind:class="'mb-2 mr-sm-2 mb-sm-0 ' + (selected.who == null ? 'text-muted' : 'text-dark')">
+                <option disabled value="null"> please select one... </option>
+                <option value="user" class="text-dark">current user of opioids</option>
+                <option value="family" class="text-dark">friend or family member</option>
+              </b-form-select>
+              <wbr>&nbsp;
+              <label for="whatInlineSelect" class="mr-sm-2">seeking</label>
+              <b-form-select id="whatInlineSelect"
+                size="sm"
+                v-model="selected.what"
+                v-bind:class="'mb-2 mr-sm-2 mb-sm-0 ' + (selected.what == null ? 'text-muted' : 'text-dark')">
+                <option disabled value="null"> please select one... </option>
+                <option value="treatment" class="text-dark">emergency treatment</option>
+                <option value="info" class="text-dark">helpful information</option>
+              </b-form-select>
               <label>&nbsp;for opiate users.&nbsp;</label>
             </b-form>
+            <br><br>
+            <br><br>
           </b-jumbotron>
           <!--
           <router-link v-bind:to="'/' + selected.who + '/' + selected.what">
@@ -69,7 +81,7 @@ export default {
 
 <style>
 body {
-  background-color: white;
+  background-color: #f7f7f7;
 }
 
 #app {
@@ -81,8 +93,12 @@ body {
   margin-bottom: 20px;
 }
 
-.bloc { display:inline-block; vertical-align:top; overflow:hidden; border:solid grey 1px; }
-.bloc select { padding:10px; margin:-5px -20px -5px -5px; }
+#jumbotron-1 {
+  background-image: linear-gradient(rgba(255, 255 , 255, 90%), rgba(255, 255 , 255, 90%)),
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/1877%2C_Harvey%2C_Sarah_E.%2C_Winsted%2C_Connecticut.jpg/512px-1877%2C_Harvey%2C_Sarah_E.%2C_Winsted%2C_Connecticut.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .fade-enter-active,
 .fade-leave-active {
