@@ -4,7 +4,7 @@
         <b-col>
           <b-jumbotron id="jumbotron-1" class="pt-2"> <!-- Bootstrap jumbotron, https://bootstrap-vue.js.org/docs/components/jumbotron -->
             <template slot="header">
-              Connect <wbr> CT <!-- iPhone screen is too narrow for the full title, wbr breaks the middle so it fits -->
+              <strong style="font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;"> Connect CT </strong> <!-- iPhone screen is too narrow for the full title, wbr breaks the middle so it fits -->
             </template>
             <template slot="lead">
               Opiate abuse is a widespread and unfortunate reality that affects all Connecticut residents in some way.
@@ -45,6 +45,12 @@
           <transition name="fade" mode="out-in"> <!-- fade router pages out and in, https://vuejs.org/v2/guide/transitions.html -->
             <router-view></router-view>
           </transition>
+          <br>
+          <b-card bg-variant="light" text-variant="dark" class="text-center" title="Your area">
+              <p class="card-text">
+                Placeholder for risk card.
+              </p>
+          </b-card>
         </b-col>
       </b-row>
     </b-container>
@@ -92,10 +98,9 @@ body {
 }
 
 #jumbotron-1 {
-  background-image: linear-gradient(rgba(255, 255 , 255, 90%), rgba(255, 255 , 255, 90%)), /* fade background image opacity without affecting header and lead */
-    url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/1877%2C_Harvey%2C_Sarah_E.%2C_Winsted%2C_Connecticut.jpg/512px-1877%2C_Harvey%2C_Sarah_E.%2C_Winsted%2C_Connecticut.jpg");
+  background-image: linear-gradient(rgba(255, 255 , 255, 100%), rgba(255, 255 , 255, 90%)), /* fade background image opacity without affecting header and lead */
+    url("./assets/winstead.jpg");
     /* Winstead, Connecticut by Sarah E. Harvey */
-    /* TODO: use vue-loader for image assets */
   background-repeat: no-repeat;
   background-size: cover;
 }
