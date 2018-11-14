@@ -7,10 +7,16 @@ const Address = require('./models/address');
 const mongoose = require("mongoose");
 const request = require("request");
 
+var history = require('connect-history-api-fallback');
+
 const app = express();
 
 app.use(cors());
-app.use(express.static(path.resolve(__dirname, '..', 'build')));
+
+const middle = express.static(path.resolve(__dirname, '..'));
+app.use(middle); // prevent static files from 404ing
+app.use(history());
+app.use(middle); // resolve index.html after history 
 
 mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true });
 let db = mongoose.connection;
