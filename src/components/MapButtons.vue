@@ -1,5 +1,6 @@
 <template>
-  <div> <!-- Bootstrap buttons, https://bootstrap-vue.js.org/docs/components/button/ -->
+  <div>
+      <b-button v-on:click="onClickShowAll">Show All</b-button>
       <b-button v-on:click="onClickSubstance">Subtance Abuse Facilities</b-button>
       <b-button v-on:click="onClickNaloxone">Naloxone Pharmacies</b-button>
       <b-button v-on:click="onClickAlcoholDrug">Alcohol and Drug Counselors</b-button>
@@ -18,6 +19,9 @@ export default {
         },
         onClickAlcoholDrug: function () {
             this.$emit('clicked', "ADC");
+        },
+        onClickShowAll: function(){
+            this.$emit('clicked', "");
         }
     }
 }
