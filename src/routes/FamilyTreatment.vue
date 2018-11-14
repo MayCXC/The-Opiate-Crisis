@@ -9,29 +9,27 @@
     <br>
     <b-card bg-variant="danger" text-variant="light" class="text-center" title="Emergency resources">
         <p class="card-text">
-          If a loved one is in immediate danger, contact emergency services as soon as possible by choosing an option below:
+          If a loved one is in immediate danger, contact emergency services as soon as possible by pressing the button below:
         </p>
-        <b-button v-on:click="call911">Call 911</b-button>
-        <b-button href="https://www.google.com/maps/dir/?api=1&destination=drug+rehab+center" target="_blank">Find the nearest treatment center</b-button>
+        <b-button href="tel://911">Call 911</b-button>
     </b-card>
     <br>
-    <b-card bg-variant="primary" text-variant="light" class="text-center" title="Are they an opioid user?">
-        <p class="card-text">
-        Some helpful information on identifying opioid users
-        </p>
-    </b-card>
-    <br>
-    <b-card bg-variant="primary" text-variant="light" class="text-center" title="What's the best way to help?">
-      <p class="card-text">
-      Some helpful information on how to help opioid users
-      </p>
+    <b-card no-body>
+      <b-card-body>
+        If it isn't urgent and you want to visit a support center, choose one from the map below:
+      </b-card-body>
+    <map-with-markers></map-with-markers>
     </b-card>
     <br>
   </div>
 </template>
 
 <script>
+import MapWithMarkers from '../components/MapWithMarkers.vue'
 export default {
-  name: 'familyTreatment'
+  name: 'familyTreatment',
+  components: {
+    MapWithMarkers
+  }
 };
 </script>
