@@ -1,11 +1,6 @@
 <template>
-<<<<<<< HEAD
-  <div>
-    <GmapMap :center="{lat:41.6032, lng:-73.0877}" :zoom="9" map-type-id="roadmap" style="width: 100%; height: 600px">
-=======
   <div v-if="locationFound">
     <GmapMap :center="location" :zoom="13" map-type-id="roadmap" style="width: 100%; height: 600px">
->>>>>>> d10259e416dec223a61429621f6cea27cf45729e
       <GmapCluster>
         <GmapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="false" @click="openGoogleMaps(index)" />
       </GmapCluster>
@@ -40,8 +35,8 @@ export default {
         cache: "default"
       };
       let requestURL = credentialType
-        ? "http://localhost:4000/api/markers?credentialType=" + credentialType
-        : "http://localhost:4000/api/markers?credentialType";
+        ? "http://localhost:4001/api/markers?credentialType=" + credentialType
+        : "http://localhost:4001/api/markers?credentialType";
       console.log(requestURL);
       let myRequest = new Request(requestURL, myInit);
       fetch(myRequest)

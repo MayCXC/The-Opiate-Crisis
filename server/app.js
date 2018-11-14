@@ -7,10 +7,16 @@ const Address = require('./models/address');
 const mongoose = require("mongoose");
 const request = require("request");
 
-const app = express();
+var history = require('connect-history-api-fallback');
 
-app.use(cors());
-app.use(express.static(path.resolve(__dirname, '..', 'build')));
+const api = express();
+api.use(cors());
+
+const app = express();
+const middle = express.static(path.resolve(__dirname, '..'));
+app.use(middle); // prevent static files from 404ing
+app.use(history());
+app.use(middle); // resolve index.html after history
 
 mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true });
 let db = mongoose.connection;
@@ -34,7 +40,7 @@ const databaseJob = new CronJob('0 0 1 * *', function () {
 databaseJob.start();
 
 // https://stackoverflow.com/questions/16561296/finding-nearest-locations-using-google-maps-api
-app.get('/api/markers', (req, res) => {
+api.get('/api/markers', (req, res) => {
     let credentialType = req.query.credentialType;
     if (credentialType) {
         Address.find({ credentialtype: credentialType }, (err, addresses) => {
@@ -112,4 +118,5 @@ function fetchCTDataAndUpdateDatabase () {
     });
 }
 
+api.listen(process.env.API_PORT || 4001);
 app.listen(process.env.PORT || 4000);
