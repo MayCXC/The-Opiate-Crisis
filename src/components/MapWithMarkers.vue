@@ -35,8 +35,8 @@ export default {
         cache: "default"
       };
       let requestURL = credentialType
-        ? "http://localhost:4000/api/markers?credentialType=" + credentialType
-        : "http://localhost:4000/api/markers?credentialType";
+        ? "http://localhost:4001/api/markers?credentialType=" + credentialType
+        : "http://localhost:4001/api/markers?credentialType";
       console.log(requestURL);
       let myRequest = new Request(requestURL, myInit);
       fetch(myRequest)
