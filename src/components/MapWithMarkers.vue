@@ -2,7 +2,7 @@
   <div v-if="locationFound">
     <GmapMap :center="location" :zoom="13" map-type-id="roadmap" style="width: 100%; height: 600px">
       <GmapCluster>
-        <GmapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="false" @click="alertHello" />
+        <GmapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="false" @click="openGoogleMaps(index)" />
       </GmapCluster>
     </GmapMap>
     <map-buttons @clicked="showSpecificData"></map-buttons>
@@ -14,7 +14,7 @@ import MapButtons from "./MapButtons.vue";
 export default {
   name: "Gmap",
   props: ["type"],
-  data: function() {
+  data: function () {
     return {
       markers: [],
       location: {},
@@ -25,7 +25,7 @@ export default {
     MapButtons
   },
   methods: {
-    fetchMarkers: function(credentialType) {
+    fetchMarkers: function (credentialType) {
       const myInit = {
         method: "GET",
         headers: {
@@ -48,6 +48,7 @@ export default {
             let markerObj = { position: {} };
             markerObj.position.lat = data[i].lat;
             markerObj.position.lng = data[i].lng;
+            markerObj.placeid = data[i].placeid;
             this.markers.push(markerObj);
           }
         })
@@ -55,12 +56,12 @@ export default {
           console.log(error);
         });
     },
-    showSpecificData: function(dataType) {
+    showSpecificData: function (dataType) {
       this.markers = [];
       this.fetchMarkers(dataType);
       // console.log(value);
     },
-    getLocation: function() {
+    getLocation: function () {
       let locationObj = {};
       // If geolocation is available, get the current position and store it
       if (navigator.geolocation) {
@@ -77,14 +78,16 @@ export default {
         this.locationFound = true;
       }
     },
-    alertHello: function(){
-      alert("Hello this works");
+    openGoogleMaps: function (index) {
+      console.log(this.markers[index]);
+      let googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${this.markers[index].position.lat},${this.markers[index].position.lng}&query_place_id=${this.markers[index].placeid}`;
+      window.open(googleMapsURL);
     }
   },
-  beforeMount: function() {
+  beforeMount: function () {
     this.getLocation();
   },
-  mounted: function() {
+  mounted: function () {
     this.fetchMarkers();
   }
 };
