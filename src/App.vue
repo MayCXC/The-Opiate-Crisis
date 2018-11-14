@@ -46,9 +46,9 @@
             <router-view></router-view>
           </transition>
           <br>
-          <b-card bg-variant="light" text-variant="dark" class="text-center" title="Your area">
+          <b-card bg-variant="light" text-variant="dark" class="text-center" title="Accidental drug deaths are on the rise in Connecticut">
               <p class="card-text">
-                Placeholder for risk card.
+                If you or someone you know uses opiates, know the risks and how you can get help.
               </p>
           </b-card>
         </b-col>
