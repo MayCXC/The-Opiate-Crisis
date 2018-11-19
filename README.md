@@ -6,8 +6,6 @@ Project is hosted at http://192.81.213.5/
 
 ssl and maps functionality available at https://forso.me/
 
-about:config > geo.security.allowinsecure must be set to true for full functionality
-
 ## Challenge:  The Opiate Crisis
 The opiate crisis is a national problem— but one that has hit Connecticut particularly hard.  The state, however, has a number of resources that are designed to help individuals and families that are struggling with addiction.
 
