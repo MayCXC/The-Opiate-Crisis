@@ -1,60 +1,49 @@
 <template>
   <div id="app" class="container">
-    <!-- Bootstrap layout grid container, https://bootstrap-vue.js.org/docs/components/layout/ -->
+    <!-- Bootstrap layout grid container, https://getbootstrap.com/docs/4.1/layout/overview/#containers -->
     <div class="row">
       <div class="col-lg-12">
-        <div id="jumbotron-1" class="jumbotron pt-2">
-          <!-- Bootstrap jumbotron, https://bootstrap-vue.js.org/docs/components/jumbotron -->
-          <template slot="header">
-            <strong style="font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;"> Connect CT </strong> <!-- iPhone screen is too narrow for the full title, wbr breaks the middle so it fits -->
-          </template>
-          <template slot="lead">
+        <div class="jumbotron pt-2 h-100">
+          <!-- Bootstrap jumbotron, https://getbootstrap.com/docs/4.1/components/jumbotron/ -->
+          <h1 class="display-3">Connect CT</h1>
+          <p class="lead">
             Opiate abuse is a widespread and unfortunate reality that affects all Connecticut residents in some way.
             <br>
-            For information on opiate usage and treatment in your area, choose your role below:
-            <hr>
-          </template>
+            For information on opiate usage and treatment in your area, choose
+            your role below:
+          </p>
+          <hr class="my-4">
           <form class="form-inline">
-            <!-- Bootstrap inline form, https://bootstrap-vue.js.org/docs/components/form and https://bootstrap-vue.js.org/docs/components/form-select -->
-            <label for="whoInlineSelect" class="mr-sm-2">I am a</label>
-            <select id="whoInlineSelect" size="sm" v-model="selected.who" v-bind:class="'mb-2 mr-sm-2 mb-sm-0 ' + (selected.who == '' ? 'text-muted' : 'text-dark')">
-              <!-- disabled style when selection is null -->
-              <option disabled value="null"> please select one... </option>
+            <!-- Bootstrap inline form, https://getbootstrap.com/docs/4.1/components/forms/ -->
+            <label for="whoInlineSelect" class="mr-2">I am a</label>
+            <select id="whoInlineSelect" class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0" v-model="selected.who" v-bind:class="(selected.who
+            == '' ? 'text-muted' : 'text-dark')">
+              <option disabled value="">please select one...</option>
               <option value="user" class="text-dark">current user of opioids</option>
               <option value="family" class="text-dark">friend or family member</option>
             </select>
-            <wbr>&nbsp;
-            <!-- break form on narrow screens -->
-            <label for="whatInlineSelect" class="mr-sm-2">seeking</label>
-            <select id="whatInlineSelect" size="sm" v-model="selected.what" v-bind:class="'mb-2 mr-sm-2 mb-sm-0 ' + (selected.what == '' ? 'text-muted' : 'text-dark')">
-              <!-- disabled style when selection is null -->
-              <option disabled value="null"> please select one... </option>
+            <label for="whatInlineSelect" class="mr-2">seeking</label>
+            <select id="whatInlineSelect" class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0" v-model="selected.what" v-bind:class="(selected.what
+            == '' ? 'text-muted' : 'text-dark')">
+              <option disabled value=""> please select one... </option>
               <option value="treatment" class="text-dark">emergency treatment</option>
               <option value="info" class="text-dark">helpful information</option>
             </select>
-            <label>&nbsp;for opiate users.&nbsp;</label>
+            <label>for opiate users.</label>
           </form>
-          <br><br> <!-- show background image -->
-          <br><br>
         </div>
-        <!--
-          <router-link v-bind:to="'/' + selected.who + '/' + selected.what">
-            {{ "/" + selected.who + "/" + selected.what }}
-          </router-link>
-          -->
         <transition name="fade" mode="out-in">
           <!-- fade router pages out and in, https://vuejs.org/v2/guide/transitions.html -->
           <router-view></router-view>
         </transition>
         <br>
-        <div class="card text-center">
+        <div class="card text-center bg-light">
           <div class="card-body">
-            <div class="card-title">Accidental drug deaths are on the
-              rise in Connecticut</div>
+            <h4 class="card-title">Accidental drug deaths are on the rise in Connecticut</h4>
+            <p class="card-text">
+              If you or someone you know uses opiates, know the risks and how you can get help.
+            </p>
           </div>
-          <p class="card-text">
-            If you or someone you know uses opiates, know the risks and how you can get help.
-          </p>
         </div>
       </div>
     </div>
@@ -118,7 +107,11 @@ body {
   margin-bottom: 20px;
 }
 
-#jumbotron-1 {
+.display-3 {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.jumbotron {
   background-image: linear-gradient(
       rgba(255, 255, 255, 100%),
       rgba(255, 255, 255, 90%)
