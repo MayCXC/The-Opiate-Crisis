@@ -8,6 +8,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start": "node server/app.js",
+    "preinstall": "npm i cron",
     "postinstall": "npm run build"
   },
   "dependencies": {
