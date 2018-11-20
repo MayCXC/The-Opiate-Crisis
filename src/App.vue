@@ -17,7 +17,7 @@
           <form class="form-inline">
             <!-- Bootstrap inline form, https://bootstrap-vue.js.org/docs/components/form and https://bootstrap-vue.js.org/docs/components/form-select -->
             <label for="whoInlineSelect" class="mr-sm-2">I am a</label>
-            <select id="whoInlineSelect" size="sm" v-model="selected.who" v-bind:class="'mb-2 mr-sm-2 mb-sm-0 ' + (selected.who == null ? 'text-muted' : 'text-dark')">
+            <select id="whoInlineSelect" size="sm" v-model="selected.who" v-bind:class="'mb-2 mr-sm-2 mb-sm-0 ' + (selected.who == '' ? 'text-muted' : 'text-dark')">
               <!-- disabled style when selection is null -->
               <option disabled value="null"> please select one... </option>
               <option value="user" class="text-dark">current user of opioids</option>
@@ -26,7 +26,7 @@
             <wbr>&nbsp;
             <!-- break form on narrow screens -->
             <label for="whatInlineSelect" class="mr-sm-2">seeking</label>
-            <select id="whatInlineSelect" size="sm" v-model="selected.what" v-bind:class="'mb-2 mr-sm-2 mb-sm-0 ' + (selected.what == null ? 'text-muted' : 'text-dark')">
+            <select id="whatInlineSelect" size="sm" v-model="selected.what" v-bind:class="'mb-2 mr-sm-2 mb-sm-0 ' + (selected.what == '' ? 'text-muted' : 'text-dark')">
               <!-- disabled style when selection is null -->
               <option disabled value="null"> please select one... </option>
               <option value="treatment" class="text-dark">emergency treatment</option>
@@ -75,42 +75,21 @@ export default {
   data: function() {
     // instance data must be a function, https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function
     return {
-      selected: { who: null, what: null } // form select options are instanced
+      selected: { who: '', what: '' } // form select options are instanced
     };
   },
   beforeMount: function() {
-    switch (this.$route.name) {
-      case "familyInfo": {
-        this.selected.who = "family";
-        this.selected.what = "info";
-        break;
-      }
-      case "familyTreatment": {
-        this.selected.who = "family";
-        this.selected.what = "treatment";
-        break;
-      }
-      case "userInfo": {
-        this.selected.who = "user";
-        this.selected.what = "info";
-        break;
-      }
-      case "userTreatment": {
-        this.selected.who = "user";
-        this.selected.what = "treatment";
-        break;
-      }
-    }
+    [ this.selected.who, this.selected.what ] = this.$route.path.split("/").reverse().slice(0,2).reverse();
   },
   watch: {
     "selected.who": function() {
       // load router page when both options are selected
-      if (this.selected.what != null)
+      if (this.selected.what != '')
         this.$router.push("/" + this.selected.who + "/" + this.selected.what);
     },
     "selected.what": function() {
       // load router page when both options are selected
-      if (this.selected.who != null)
+      if (this.selected.who != '')
         this.$router.push("/" + this.selected.who + "/" + this.selected.what);
     }
   }
