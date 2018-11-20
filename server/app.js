@@ -36,17 +36,17 @@ let geocoderOptions = {
 let geocoder = NodeGeocoder(geocoderOptions);
 
 // Execute a cron job first of every month to create a new database,
-let CronJob = require("cron").CronJob;
-const databaseJob = new CronJob(
-  "0 0 1 * *",
-  function() {
-    fetchCTDataAndUpdateDatabase();
-  },
-  null,
-  true,
-  "America/New_York"
-);
-databaseJob.start();
+// let CronJob = require("cron").CronJob;
+// const databaseJob = new CronJob(
+//   "0 0 1 * *",
+//   function() {
+//     fetchCTDataAndUpdateDatabase();
+//   },
+//   null,
+//   true,
+//   "America/New_York"
+// );
+// databaseJob.start();
 
 // https://stackoverflow.com/questions/16561296/finding-nearest-locations-using-google-maps-api
 app.get("/api/markers", (req, res) => {
