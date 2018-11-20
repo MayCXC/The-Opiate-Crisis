@@ -3,7 +3,7 @@
     <!-- Bootstrap layout grid container, https://getbootstrap.com/docs/4.1/layout/overview/#containers -->
     <div class="row">
       <div class="col-lg-12">
-        <div class="jumbotron pt-2 h-100">
+        <div class="jumbotron pt-2">
           <!-- Bootstrap jumbotron, https://getbootstrap.com/docs/4.1/components/jumbotron/ -->
           <h1 class="display-3">Connect CT</h1>
           <p class="lead">
