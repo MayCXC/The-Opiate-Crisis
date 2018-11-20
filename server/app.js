@@ -14,7 +14,6 @@ const app = express();
 
 // app.use(history());
 app.use(serveStatic(path.join(__dirname, "..", "dist")));
-// app.use(serveStatic(path.join(__dirname, "..", "public")));
 
 mongoose.connect(
   process.env.MONGO_DB,
@@ -50,7 +49,6 @@ databaseJob.start();
 
 // https://stackoverflow.com/questions/16561296/finding-nearest-locations-using-google-maps-api
 app.get("/api/markers", (req, res) => {
-  console.log("HIT ROUTE");
   let credentialType = req.query.credentialType;
   if (credentialType) {
     Address.find({ credentialtype: credentialType }, (err, addresses) => {

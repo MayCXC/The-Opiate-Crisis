@@ -65,7 +65,6 @@ import GmapCluster from "vue2-google-maps/dist/components/cluster";
 
 Vue.use(VueGoogleMaps, {
   load: {
-    // key: "AIzaSyDgHvNq8FAubhXF4lXOeHTCDnMEklu-0G8",
     key: process.env.VUE_APP_API_KEY,
     libraries: "places"
   }
