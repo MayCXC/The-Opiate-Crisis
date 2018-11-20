@@ -47,7 +47,11 @@
           <router-view></router-view>
         </transition>
         <br>
-        <div bg-variant="light" text-variant="dark" class="card text-center" title="Accidental drug deaths are on the rise in Connecticut">
+        <div class="card text-center">
+          <div class="card-body">
+            <div class="card-title">Accidental drug deaths are on the
+              rise in Connecticut</div>
+          </div>
           <p class="card-text">
             If you or someone you know uses opiates, know the risks and how you can get help.
           </p>
@@ -75,21 +79,25 @@ export default {
   data: function() {
     // instance data must be a function, https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function
     return {
-      selected: { who: '', what: '' } // form select options are instanced
+      selected: { who: "", what: "" } // form select options are instanced
     };
   },
   beforeMount: function() {
-    [ this.selected.who, this.selected.what ] = this.$route.path.split("/").reverse().slice(0,2).reverse();
+    [this.selected.who, this.selected.what] = this.$route.path
+      .split("/")
+      .reverse()
+      .slice(0, 2)
+      .reverse();
   },
   watch: {
     "selected.who": function() {
       // load router page when both options are selected
-      if (this.selected.what != '')
+      if (this.selected.what != "")
         this.$router.push("/" + this.selected.who + "/" + this.selected.what);
     },
     "selected.what": function() {
       // load router page when both options are selected
-      if (this.selected.who != '')
+      if (this.selected.who != "")
         this.$router.push("/" + this.selected.who + "/" + this.selected.what);
     }
   }
@@ -130,25 +138,5 @@ body {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
-}
-
-/* default styles */
-h1,
-h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
 }
 </style>
