@@ -11,8 +11,20 @@ const serveStatic = require("serve-static");
 const history = require("connect-history-api-fallback");
 
 const app = express();
-
-// app.use(history());
+// https://stackoverflow.com/questions/16561296/finding-nearest-locations-using-google-maps-api
+app.get("/api/markers", (req, res) => {
+  let credentialType = req.query.credentialType;
+  if (credentialType) {
+    Address.find({ credentialtype: credentialType }, (err, addresses) => {
+      res.json(addresses);
+    });
+  } else {
+    Address.find({}, (err, addresses) => {
+      res.json(addresses);
+    });
+  }
+});
+app.use(history());
 app.use(serveStatic(path.join(__dirname, "..", "dist")));
 
 mongoose.connect(
@@ -46,20 +58,6 @@ const databaseJob = new CronJob(
   "America/New_York"
 );
 databaseJob.start();
-
-// https://stackoverflow.com/questions/16561296/finding-nearest-locations-using-google-maps-api
-app.get("/api/markers", (req, res) => {
-  let credentialType = req.query.credentialType;
-  if (credentialType) {
-    Address.find({ credentialtype: credentialType }, (err, addresses) => {
-      res.json(addresses);
-    });
-  } else {
-    Address.find({}, (err, addresses) => {
-      res.json(addresses);
-    });
-  }
-});
 
 function fetchCTDataAndUpdateDatabase() {
   db.dropCollection("addresses", err => {

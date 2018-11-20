@@ -78,6 +78,30 @@ export default {
       selected: { who: null, what: null } // form select options are instanced
     };
   },
+  beforeMount: function() {
+    switch (this.$route.name) {
+      case "familyInfo": {
+        this.selected.who = "family";
+        this.selected.what = "info";
+        break;
+      }
+      case "familyTreatment": {
+        this.selected.who = "family";
+        this.selected.what = "treatment";
+        break;
+      }
+      case "userInfo": {
+        this.selected.who = "user";
+        this.selected.what = "info";
+        break;
+      }
+      case "userTreatment": {
+        this.selected.who = "user";
+        this.selected.what = "treatment";
+        break;
+      }
+    }
+  },
   watch: {
     "selected.who": function() {
       // load router page when both options are selected
