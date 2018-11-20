@@ -14,7 +14,7 @@ import MapButtons from "./MapButtons.vue";
 export default {
   name: "Gmap",
   props: ["type"],
-  data: function () {
+  data: function() {
     return {
       markers: [],
       location: {},
@@ -25,7 +25,7 @@ export default {
     MapButtons
   },
   methods: {
-    fetchMarkers: function (credentialType) {
+    fetchMarkers: function(credentialType) {
       const myInit = {
         method: "GET",
         headers: {
@@ -35,8 +35,9 @@ export default {
         cache: "default"
       };
       let requestURL = credentialType
-        ? "http://localhost:4001/api/markers?credentialType=" + credentialType
-        : "http://localhost:4001/api/markers?credentialType";
+        ? "/api/markers?credentialType=" + credentialType
+        : "/api/markers?credentialType";
+      // eslint-disable-next-line
       console.log(requestURL);
       let myRequest = new Request(requestURL, myInit);
       fetch(myRequest)
@@ -53,19 +54,20 @@ export default {
           }
         })
         .catch(error => {
+          // eslint-disable-next-line
           console.log(error);
         });
     },
-    showSpecificData: function (dataType) {
+    showSpecificData: function(dataType) {
       this.markers = [];
       this.fetchMarkers(dataType);
       // console.log(value);
     },
-    getLocation: function () {
-      let locationObj = {};
+    getLocation: function() {
       // If geolocation is available, get the current position and store it
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((success, error) => {
+          // eslint-disable-next-line
           if (error) return console.log(error);
           this.location.lat = success.coords.latitude;
           this.location.lng = success.coords.longitude;
@@ -78,16 +80,20 @@ export default {
         this.locationFound = true;
       }
     },
-    openGoogleMaps: function (index) {
-      console.log(this.markers[index]);
-      let googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${this.markers[index].position.lat},${this.markers[index].position.lng}&query_place_id=${this.markers[index].placeid}`;
+    openGoogleMaps: function(index) {
+      // console.log(this.markers[index]);
+      let googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${
+        this.markers[index].position.lat
+      },${this.markers[index].position.lng}&query_place_id=${
+        this.markers[index].placeid
+      }`;
       window.open(googleMapsURL);
     }
   },
-  beforeMount: function () {
+  beforeMount: function() {
     this.getLocation();
   },
-  mounted: function () {
+  mounted: function() {
     this.fetchMarkers();
   }
 };
