@@ -12,7 +12,7 @@ const app = express();
 
 // app.use(history());
 app.use(serveStatic(path.join(__dirname, "..", "dist")));
-app.use(serveStatic(path.join(__dirname, "..", "public")));
+// app.use(serveStatic(path.join(__dirname, "..", "public")));
 
 mongoose.connect(
   process.env.MONGO_DB,
