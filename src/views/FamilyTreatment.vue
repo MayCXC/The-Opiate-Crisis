@@ -2,7 +2,7 @@
   <div>
     <div class="card text-center">
       <div class="card-body">
-        <div class="card-title">Get help for a friend or family member</div>
+        <h4 class="card-title">Get help for a friend or family member</h4>
         <p class="card-text">
           Getting help for someone you care about doesn't have to be a mystery.
           We've included some resources for help you get started.
@@ -10,13 +10,13 @@
       </div>
     </div>
     <br>
-    <div class="card text-center">
+    <div class="card text-center bg-danger text-light">
       <div class="card-body">
-        <div class="card-title">Emergency resources</div>
+        <h4 class="card-title">Emergency resources</h4>
         <p class="card-text">
           If a loved one is in immediate danger, contact emergency services as soon as possible by pressing the button below:
         </p>
-        <button class="btn btn-danger" href="tel://911">Call 911</button>
+        <button class="btn btn-secondary" href="tel://911">Call 911</button>
       </div>
     </div>
     <br>

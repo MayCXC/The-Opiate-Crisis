@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <button class="btn btn-primary" v-on:click="onClickShowAll">Show All</button>
-    <button class="btn btn-primary" v-on:click="onClickSubstance">Subtance Abuse Facilities</button>
-    <button class="btn btn-primary" v-on:click="onClickNaloxone">Naloxone Pharmacies</button>
-    <button class="btn btn-primary" v-on:click="onClickAlcoholDrug">Alcohol and Drug Counselors</button>
+  <div class="btn-group">
+    <button class="btn btn-secondary" type="button" v-on:click="onClickShowAll">Show All</button>
+    <button class="btn btn-secondary" type="button" v-on:click="onClickSubstance">Subtance Abuse Facilities</button>
+    <button class="btn btn-secondary" type="button" v-on:click="onClickNaloxone">Naloxone Pharmacies</button>
+    <button class="btn btn-secondary" type="button" v-on:click="onClickAlcoholDrug">Alcohol and Drug Counselors</button>
   </div>
 </template>
 
@@ -27,3 +27,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.btn-secondary {
+  margin: 5px;
+}
+</style>

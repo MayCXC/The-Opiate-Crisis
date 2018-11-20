@@ -1,6 +1,7 @@
 <template>
   <div v-if="locationFound">
-    <GmapMap :center="location" :zoom="13" map-type-id="roadmap" style="width: 100%; height: 600px">
+    <GmapMap :center="location" :zoom="13" map-type-id="roadmap" style="width:
+    100%; height: 600px; margin: 10px;">
       <GmapCluster>
         <GmapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="false" @click="openGoogleMaps(index)" />
       </GmapCluster>
