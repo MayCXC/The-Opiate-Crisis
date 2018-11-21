@@ -94,7 +94,10 @@ export default {
 </script>
 
 <style>
+html,
 body {
+  max-width: 100%;
+  overflow-x: hidden;
   background-color: #f7f7f7; /* matches jumbotron background */
 }
 
