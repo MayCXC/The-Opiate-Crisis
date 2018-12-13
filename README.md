@@ -19,6 +19,12 @@ What information would be helpful for families and addicts who seek treatment?  
 
 You will find numerous useful resources in the Health and Human Services Category of the Connecticut Data site located at https://data.ct.gov/browse?category=Health+and+Human+Services.  By no means is your team obligated to limit yourselves to data from that category.  All data used must be accessed via REST API or direct dataset download.  No embeds from the CT.gov site will be permitted to be displayed in your project.
 
+## Design: Emotional intelligence
+We have important information to show opiate abusers that need urgent help, and we have important information to show family and friends that are concerned for the long-term health of their loved ones. We don't want to scare loved ones with emergency treatment information if they aren't in an emergency circumstance, but we don't want to obscure emergency information from anyone who needs it. To meet both requirements, we use:
+- dropdowns to find out **who** is looking for **what** information before any is displayed
+- routes to seamlessly display the appropriate information without disorienting redirects
+As these require user input, both must render on mobile screens and be keyboard accessible to be [WCAG compliant](https://www.w3.org/WAI/WCAG21/quickref/#keyboard-accessible).
+
 ## Design: Rapid development
 We have three weeks to complete this project, and little shared knowledge on javascript frameworks or the language in general. After some quick testing, the first commit to this repository was a simple drop-down menu test made with a new [Vue CLI](https://cli.vuejs.org/guide/) project, [Vue router](https://router.vuejs.org/), and [Bootstrap Vue](https://bootstrap-vue.js.org/) in close-to-defualt development mode. We ended up forking and modifying this test for a hackathon entry, which provided more insight on some Vue.js idioms that we then used in this project. After the functionality of the website was mostly complete, we replaced the development server with express and [express-history-api-fallback](https://www.npmjs.com/package/express-history-api-fallback), which enabled us to continue using Vue router instead of switching to express routes.
 
