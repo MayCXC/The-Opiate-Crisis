@@ -35,7 +35,7 @@ We have three weeks to complete this project, and little shared knowledge on jav
 The main benefit of our project design was the speed of development. The workflow of editing a Vue project file, automatically updating the development server, and refreshing the locally hosted webpage meant continuous and uninterrupted progress. This also made it easier to lose track of the scope of our commits, but we avoided conflicts by working on different parts of the code, working at different times, and (when absolutely necessary) branching and merging.
 
 ### Analysis: Cons
-The biggest consequence of our project design was incompatibilities that arose from the ad-hoc setup we started with.
+The biggest consequence of our project design was incompatibility that arose from the ad-hoc setup we started with.
 
 - Without realizing, the first commit was using an soon-to-be outdated Bootstrap Vue configuration, and after we started the project several vulnerabilities were found in its version of webpack-dev-server.
 - We had also thrown together a nonstandard express setup that could not be deployed on heroku, so we used a digitalocean droplet instead. This had the unexpected consequence of breaking the geolocation API, as the droplet only served HTTP and geolocation requires HTTPS on modern browsers. We disabled this security check on our testing computer, but did not fix the issue on other computers before the competition. Luckily, the judges were very understanding and let us present with our own computer, so the full functionality of the website was available during our presentation.
