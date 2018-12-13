@@ -23,7 +23,7 @@ You will find numerous useful resources in the Health and Human Services Categor
 We have important information to show opiate abusers that need urgent help, and we have important information to show family and friends that are concerned for the long-term health of their loved ones. We don't want to scare anyone with emergency treatment information if they aren't in an emergency circumstance, but we don't want to obscure emergency treatment information from anyone who needs it. To meet both requirements, we use:
 - dropdowns to find out **who** is looking for **what** information before any is displayed
 - routes to seamlessly display the appropriate information without disorienting redirects
-As these require user input, both must render on mobile screens and be keyboard accessible to be [WCAG compliant](https://www.w3.org/WAI/WCAG21/quickref/#keyboard-accessible).
+Any and all inputs must be mobile device and keyboard accessible to be [WCAG compliant](https://www.w3.org/WAI/WCAG21/quickref/#keyboard-accessible).
 
 ## Design: Rapid development
 We have three weeks to complete this project, and little shared knowledge on javascript frameworks or the language in general.
