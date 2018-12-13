@@ -26,7 +26,7 @@ We have important information to show opiate abusers that need urgent help, and 
 Any and all inputs must be mobile device and keyboard accessible to be [WCAG compliant](https://www.w3.org/WAI/WCAG21/quickref/#keyboard-accessible).
 
 ## Design: Rapid development
-We have three weeks to complete this project, and little shared knowledge on javascript frameworks or the language in general.
+Considering we have three weeks to complete this project, and little shared knowledge on javascript frameworks or the language in general, we should use the quickest and easiest framework we can find.
 - After some quick testing, the first commit to this repository was a simple drop-down menu test made with a new [Vue CLI](https://cli.vuejs.org/guide/) project, [Vue router](https://router.vuejs.org/), and [Bootstrap Vue](https://bootstrap-vue.js.org/) in close-to-defualt development mode.
 - We ended up forking and modifying this test for a hackathon entry, which provided more insight on some Vue.js idioms that we then used in this project.
 - After the functionality of the website was mostly complete, we replaced the development server with express and [express-history-api-fallback](https://www.npmjs.com/package/express-history-api-fallback), which enabled us to continue using Vue router instead of switching to express routes.
