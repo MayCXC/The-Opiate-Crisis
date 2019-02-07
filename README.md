@@ -4,6 +4,21 @@
 
 Project is hosted at https://the-opiate-crisis.herokuapp.com/
 
+## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+```
+
+For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
 ## Challenge: The Opiate Crisis
 The opiate crisis is a national problem— but one that has hit Connecticut particularly hard.  The state, however, has a number of resources that are designed to help individuals and families that are struggling with addiction.
 
@@ -45,18 +60,3 @@ The biggest consequence of our project design was incompatibility that arose fro
 
 ## Result: Success
 We tied with UCONN for first place, the fourth consecutive year Quinnipiac has put a student on the winning team. It was a good experience and a good time for everyone, we left with more friends and fewer resumes than we came with. 
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
