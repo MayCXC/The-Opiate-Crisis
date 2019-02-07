@@ -44,7 +44,7 @@ The biggest consequence of our project design was incompatibility that arose fro
 - After the competition, we created an up to date project, fixed the express configuration, and deployed to heroku, which fixed all of these issues.
 
 ## Result: Success
-We tied with UCONN for first place, the fourth consecutive year Quinnipiac has put a student on the winning time. It was a good experience and a good time for everyone, we left with way more friends and way fewer resumes than we came with. 
+We tied with UCONN for first place, the fourth consecutive year Quinnipiac has put a student on the winning team. It was a good experience and a good time for everyone, we left with way more friends and way fewer resumes than we came with. 
 
 ## Build Setup
 
