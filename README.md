@@ -20,7 +20,7 @@ What information would be helpful for families and addicts who seek treatment?  
 You will find numerous useful resources in the Health and Human Services Category of the Connecticut Data site located at https://data.ct.gov/browse?category=Health+and+Human+Services.  By no means is your team obligated to limit yourselves to data from that category.  All data used must be accessed via REST API or direct dataset download.  No embeds from the CT.gov site will be permitted to be displayed in your project.
 
 ## Design: Emotional intelligence
-We have important information to show opiate abusers that need urgent help, and we have important information to show family and friends that are concerned for the long-term health of their loved ones. We don't want to scare anyone with emergency treatment information if they aren't in an emergency circumstance, but we don't want to obscure emergency treatment information from anyone who needs it. To meet both requirements, we use:
+We have important information to show to opiate abusers that need urgent help, and we have important information to show family and friends that are concerned for the long-term health of their loved ones. We don't want to scare anyone with emergency treatment information if they aren't in an emergency circumstance, but we don't want to obscure emergency treatment information from anyone who needs it. To meet both requirements, we use:
 - dropdowns to find out **who** is looking for **what** information before any is displayed
 - routes to seamlessly display the appropriate information without disorienting redirects
 
@@ -44,7 +44,7 @@ The biggest consequence of our project design was incompatibility that arose fro
 - After the competition, we created an up to date project, fixed the express configuration, and deployed to heroku, which fixed all of these issues.
 
 ## Result: Success
-We tied with UCONN for first place, the fourth consecutive year Quinnipiac has put a student on the winning team. It was a good experience and a good time for everyone, we left with way more friends and way fewer resumes than we came with. 
+We tied with UCONN for first place, the fourth consecutive year Quinnipiac has put a student on the winning team. It was a good experience and a good time for everyone, we left with more friends and fewer resumes than we came with. 
 
 ## Build Setup
 
