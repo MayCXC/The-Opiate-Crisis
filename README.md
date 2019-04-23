@@ -10,11 +10,24 @@ Project is hosted at https://the-opiate-crisis.herokuapp.com/
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
-
 # build for production with minification
 npm run build
+```
+
+```
+Lifecycle scripts included in the-opiate-crisis:
+  start
+    node server/app.js
+  postinstall
+    npm run build
+
+available via `npm run-script`:
+  serve
+    vue-cli-service serve
+  build
+    vue-cli-service build
+  lint
+    vue-cli-service lint
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
@@ -45,7 +58,7 @@ Any and all inputs must be mobile device and keyboard accessible to be [WCAG com
 Considering we have three weeks to complete this project, and little shared knowledge on javascript frameworks or the language in general, we should use the quickest and easiest framework we can find.
 - After some quick testing, the first commit to this repository was a simple drop-down menu test made with a new [Vue CLI](https://cli.vuejs.org/guide/) project, [Vue router](https://router.vuejs.org/), and [Bootstrap Vue](https://bootstrap-vue.js.org/) in close-to-defualt development mode.
 - We ended up forking and modifying this test for a hackathon entry, which provided more insight on some Vue.js idioms that we then used in this project.
-- After the functionality of the website was mostly complete, we replaced the development server with express and [express-history-api-fallback](https://www.npmjs.com/package/express-history-api-fallback), which enabled us to continue using Vue router instead of switching to express routes.
+- After the functionality of the website was mostly complete, we replaced the development server with [express](https://www.npmjs.com/package/express) and [express-history-api-fallback](https://www.npmjs.com/package/express-history-api-fallback), which enabled us to continue using Vue router instead of switching to express routes.
 
 ### Analysis: Pros
 The main benefit of our project design was the speed of development. The workflow of editing a Vue project file, automatically updating the development server, and refreshing the locally hosted webpage meant continuous and uninterrupted progress. This also made it easier to lose track of the scope of our commits, but we avoided conflicts by working on different parts of the code, working at different times, and (when absolutely necessary) branching and merging.
