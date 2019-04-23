@@ -10,11 +10,24 @@ Project is hosted at https://the-opiate-crisis.herokuapp.com/
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
-
 # build for production with minification
 npm run build
+```
+
+```
+Lifecycle scripts included in the-opiate-crisis:
+  start
+    node server/app.js
+  postinstall
+    npm run build
+
+available via `npm run-script`:
+  serve
+    vue-cli-service serve
+  build
+    vue-cli-service build
+  lint
+    vue-cli-service lint
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
