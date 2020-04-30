@@ -16,7 +16,7 @@
     "connect-history-api-fallback": "^1.6.0",
     "cron": "^1.7.2",
     "express": "^4.17.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mongoose": "^5.7.5",
     "node-geocoder": "^3.24.0",
     "popper.js": "^1.15.0",
