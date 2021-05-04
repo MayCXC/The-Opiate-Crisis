@@ -71,5 +71,5 @@ The biggest consequence of our project design was incompatibility that arose fro
 - At one point we realized that `express-history-api-fallback` was serving all of our project files, including offline Node scripts and Vue project files. None of these were resolved by URLs, but the files were listed in the chrome developer console.
 - After the competition, we created an up to date project, fixed the express configuration, and deployed to heroku, which fixed all of these issues.
 
-## Result: Success
+# Result: Success
 We tied with UCONN for first place, the fourth consecutive year Quinnipiac has put a student on the winning team. It was a good experience and a good time for everyone, we left with more friends and fewer resumes than we came with. 
