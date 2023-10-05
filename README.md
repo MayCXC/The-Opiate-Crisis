@@ -2,7 +2,7 @@
 
 > Bobconcatenators CTC 2018 Entry
 
-Project is hosted at https://the-opiate-crisis.herokuapp.com/
+Project was hosted at https://the-opiate-crisis.herokuapp.com/
 
 ## Build Setup
 
