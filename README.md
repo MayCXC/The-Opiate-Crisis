@@ -48,7 +48,7 @@ What information would be helpful for families and addicts who seek treatment?  
 You will find numerous useful resources in the Health and Human Services Category of the Connecticut Data site located at https://data.ct.gov/browse?category=Health+and+Human+Services.  By no means is your team obligated to limit yourselves to data from that category.  All data used must be accessed via REST API or direct dataset download.  No embeds from the CT.gov site will be permitted to be displayed in your project.
 
 ## Design: Emotional intelligence
-We have important information to show to opiate abusers that need urgent help, and we have important information to show family and friends that are concerned for the long-term health of their loved ones. We don't want to scare anyone with emergency treatment information if they aren't in an emergency circumstance, but we don't want to obscure emergency treatment information from anyone who needs it. To meet both requirements, we use:
+We have important information to show to opiate abusers that need urgent help, and we have important information to show family and friends that are concerned for the long-term health of their loved ones. We don't want to scare anyone with emergency treatment information if they aren't in an emergency circumstance, but we don't want to obscure emergency treatment information from anyone who may be in need of it. To meet both requirements, we use:
 - dropdowns to find out **who** is looking for **what** information before any is displayed
 - routes to seamlessly display the appropriate information without disorienting redirects
 
